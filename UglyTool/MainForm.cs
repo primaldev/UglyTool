@@ -302,6 +302,12 @@ namespace UglyTool
             
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AboutBox about = new AboutBox();
+            about.Show();
+        }
+
         
 
     }

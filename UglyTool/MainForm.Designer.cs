@@ -50,6 +50,7 @@
             this.groupSelectWorker = new System.ComponentModel.BackgroundWorker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.selectDomain = new System.Windows.Forms.ComboBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressImage)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -238,11 +239,23 @@
             this.selectDomain.Size = new System.Drawing.Size(258, 21);
             this.selectDomain.TabIndex = 0;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(602, 754);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(35, 13);
+            this.linkLabel1.TabIndex = 17;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "About";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 776);
+            this.ClientSize = new System.Drawing.Size(670, 773);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.itemMembers);
             this.Controls.Add(this.itemMemberOf);
@@ -252,6 +265,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "UglyTool 1.3";
@@ -287,6 +301,7 @@
         private System.ComponentModel.BackgroundWorker groupSelectWorker;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox selectDomain;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
