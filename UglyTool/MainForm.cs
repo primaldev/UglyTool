@@ -84,58 +84,61 @@ namespace UglyTool
             itemMemberOf.Text = "";
             itemProperties.Text = "";
             itemMembers.Text = "";
-            UserPrincipal userPricelpal = (UserPrincipal)searchResultUsers.SelectedItem;
-            //
-
-            itemProperties.Text += "Account: " + userPricelpal.SamAccountName + "\r\n";
-            itemProperties.Text += "Name: " + userPricelpal.Name + "\r\n";
-            itemProperties.Text += "AccountExpirationDate: " + userPricelpal.AccountExpirationDate + "\r\n";
-            itemProperties.Text += "AccountLockoutTime: " + userPricelpal.AccountLockoutTime + "\r\n";
-            itemProperties.Text += "BadLogonCount: " + userPricelpal.BadLogonCount + "\r\n";
-            itemProperties.Text += "DisplayName: " + userPricelpal.DisplayName + "\r\n";
-            itemProperties.Text += "Description: " + userPricelpal.Description + "\r\n";
-           
-            itemProperties.Text += "EmailAddress: " + userPricelpal.EmailAddress + "\r\n";
-            itemProperties.Text += "GivenName: " + userPricelpal.GivenName + "\r\n";
-            itemProperties.Text += "HomeDirectory: " + userPricelpal.HomeDirectory + "\r\n";
-            itemProperties.Text += "HomeDrive: " + userPricelpal.HomeDrive + "\r\n";
-            itemProperties.Text += "LastLogon: " + userPricelpal.LastLogon + "\r\n";
-            itemProperties.Text += "LastPasswordSet: " + userPricelpal.LastPasswordSet + "\r\n";
-            itemProperties.Text += "PasswordNeverExpires: " + userPricelpal.PasswordNeverExpires + "\r\n";
-            itemProperties.Text += "Surname: " + userPricelpal.Surname + "\r\n";
-            itemProperties.Text += "Enabled: " + userPricelpal.Enabled + "\r\n";
-            itemProperties.Text += "MiddleName: " + userPricelpal.MiddleName + "\r\n";
-            itemProperties.Text += "\r\n";
-            itemProperties.Text += "DistinguishedName: " + userPricelpal.DistinguishedName + "\r\n";
-        
-            try
+            if (searchResultUsers.SelectedItem != null)
             {
-                /*
-                using (var userGroups = userPricelpal.GetGroups())
+
+                UserPrincipal userPricelpal = (UserPrincipal)searchResultUsers.SelectedItem;
+                //
+
+                itemProperties.Text += "Account: " + userPricelpal.SamAccountName + "\r\n";
+                itemProperties.Text += "Name: " + userPricelpal.Name + "\r\n";
+                itemProperties.Text += "AccountExpirationDate: " + userPricelpal.AccountExpirationDate + "\r\n";
+                itemProperties.Text += "AccountLockoutTime: " + userPricelpal.AccountLockoutTime + "\r\n";
+                itemProperties.Text += "BadLogonCount: " + userPricelpal.BadLogonCount + "\r\n";
+                itemProperties.Text += "DisplayName: " + userPricelpal.DisplayName + "\r\n";
+                itemProperties.Text += "Description: " + userPricelpal.Description + "\r\n";
+
+                itemProperties.Text += "EmailAddress: " + userPricelpal.EmailAddress + "\r\n";
+                itemProperties.Text += "GivenName: " + userPricelpal.GivenName + "\r\n";
+                itemProperties.Text += "HomeDirectory: " + userPricelpal.HomeDirectory + "\r\n";
+                itemProperties.Text += "HomeDrive: " + userPricelpal.HomeDrive + "\r\n";
+                itemProperties.Text += "LastLogon: " + userPricelpal.LastLogon + "\r\n";
+                itemProperties.Text += "LastPasswordSet: " + userPricelpal.LastPasswordSet + "\r\n";
+                itemProperties.Text += "PasswordNeverExpires: " + userPricelpal.PasswordNeverExpires + "\r\n";
+                itemProperties.Text += "Surname: " + userPricelpal.Surname + "\r\n";
+                itemProperties.Text += "Enabled: " + userPricelpal.Enabled + "\r\n";
+                itemProperties.Text += "MiddleName: " + userPricelpal.MiddleName + "\r\n";
+                itemProperties.Text += "\r\n";
+                itemProperties.Text += "DistinguishedName: " + userPricelpal.DistinguishedName + "\r\n";
+
+                try
                 {
-                    userGroups.OrderBy(x => x.SamAccountName);
-                foreach(Principal group in userGroups) {
-                    itemMemberOf.Text += group.Name + "\r\n";
-                }
-                }
-                */
-                var userGroups = userPricelpal.GetGroups().OrderBy(x => x.SamAccountName);
-                
-                    
+                    /*
+                    using (var userGroups = userPricelpal.GetGroups())
+                    {
+                        userGroups.OrderBy(x => x.SamAccountName);
+                    foreach(Principal group in userGroups) {
+                        itemMemberOf.Text += group.Name + "\r\n";
+                    }
+                    }
+                    */
+                    var userGroups = userPricelpal.GetGroups().OrderBy(x => x.SamAccountName);
+
+
                     foreach (Principal group in userGroups)
                     {
                         itemMemberOf.Text += group.Name + "\r\n";
                     }
-                
 
+
+
+                }
+                catch
+                {
+                    //do nothing
+                }
 
             }
-            catch
-            {
-                //do nothing
-            }
-
-            
             
         }
 
@@ -146,7 +149,7 @@ namespace UglyTool
             itemMemberOf.Text = "";
             itemProperties.Text = "";
             itemMembers.Text = "";
-
+           
            GroupPrincipal groupPrincipal =  (GroupPrincipal)SearchResultGroups.SelectedItem;
            progressImage.Visible = true;
            var item = SearchResultGroups.SelectedItem;
